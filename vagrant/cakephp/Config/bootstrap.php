@@ -97,6 +97,9 @@ CakeLog::config('error', array(
 	'file' => 'error',
 ));
 
+// Pluginディレクトリ指定を相対パスで
+App::build(array('Plugin' => array(ROOT . DS . 'Plugin' . DS)));
+
 // composerのautoloadを読み込み
 require ROOT . DS . 'Vendor' . DS . 'autoload.php';
 
@@ -104,3 +107,5 @@ require ROOT . DS . 'Vendor' . DS . 'autoload.php';
 // https://github.com/composer/composer/commit/c80cb76b9b5082ecc3e5b53b1050f76bb27b127b を参照
 spl_autoload_unregister(array('App', 'load'));
 spl_autoload_register(array('App', 'load'), true, true);
+
+CakePlugin::loadAll();
